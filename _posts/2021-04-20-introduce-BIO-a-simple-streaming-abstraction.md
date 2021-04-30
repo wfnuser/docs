@@ -102,7 +102,7 @@ data Proxy a' a b' b m r
 With this beast at hand, pipes could provide more interesting primitives like `await`, or `>->`. e.g `do x <- await; y <- await; return (x, y)` becomes:
 
 ```haskell
-Request () (\ x -> Request () (\ x -> Pure (x, y)))
+Request () (\ x -> Request () (\ y -> Pure (x, y)))
 ```
 
 One technique pipes used is to use type `Void` to eliminate some constructors under certain types while still keep composability:
